@@ -1,0 +1,20 @@
+﻿<Window x:Class="RegistroTarea3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RegistroTarea3"
+        mc:Ignorable="d"
+        Title="Menu " Height="400" Width="450" WindowStartupLocation="CenterScreen">
+    <Grid>
+
+        <StackPanel>
+            <Menu Height="18">
+                <MenuItem Header="Registros">
+                    <MenuItem x:Name="PersonasMenuItem" Header="Registro de Personas" Click="PersonasMenuItem_Click"/>
+                    <MenuItem x:Name="PrestamosMenuItem" Header="Registro de Prestamos" Click="PrestamosMenuItem_Click"/>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+    </Grid>
+</Window>
