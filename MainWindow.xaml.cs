@@ -37,5 +37,11 @@ namespace RegistroTarea3
             rPrestamos rPr = new rPrestamos();
             rPr.Show();
         }
+
+        private void MorasMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            rMoras rPr = new rMoras();
+            rPr.Show();
+        }
     }
 }

@@ -13,8 +13,10 @@
                 <MenuItem Header="Registros">
                     <MenuItem x:Name="PersonasMenuItem" Header="Registro de Personas" Click="PersonasMenuItem_Click"/>
                     <MenuItem x:Name="PrestamosMenuItem" Header="Registro de Prestamos" Click="PrestamosMenuItem_Click"/>
+                    <MenuItem x:Name="MorasMenuItem" Header="Registro de Moras" Click="MorasMenuItem_Click"/>
                 </MenuItem>
             </Menu>
         </StackPanel>
     </Grid>
+    
 </Window>

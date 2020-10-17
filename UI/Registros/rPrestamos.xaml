@@ -18,7 +18,7 @@
     <!--BOTON BUSCAR-->
                 <Button x:Name="BuscarButton" Margin="50,0,0,0" Width="120" Click="BuscarButton_Click">
                     <StackPanel Orientation="Horizontal">
-                        <Image />
+                        <Image Height="25" Source="/imagenes/buscar.png" />
                         <Label Content="Buscar"/>
                     </StackPanel>
                 </Button>
@@ -32,7 +32,7 @@
     <!--PERSONA ID--> 
 
             <Label Content="PersonaId:" Margin="0,10,0,0" />
-            <TextBox x:Name="PersonaIdTextBox" Text="{Binding PersonaId}" Height="25"/>
+            <ComboBox x:Name="PersonaIdComboBox" Text="{Binding PersonaId}" Height="25"/>
 
 
     <!--CONCEPTO-->
@@ -56,17 +56,17 @@
             <StackPanel Orientation="Horizontal" Margin="0,40,0,0" HorizontalAlignment="Center">
                 <Button x:Name="NuevoButton" Click="NuevoButton_Click" Width="120">
                     <StackPanel Orientation="Horizontal">
-                        <Image />
+                        <Image Height="25" Source="/imagenes/nuevo.png"/>
                         <Label Content="Nuevo" />
                     </StackPanel>
                 </Button>
 
 
-    <!-- GUARDADO-->
+    <!-- Boton GUARDADO-->
 
                 <Button x:Name="GuardarButton" Click="GuardarButton_Click" Width="120" Margin="20,0,0,0" >
                     <StackPanel Orientation="Horizontal">
-                        <Image />
+                        <Image Height="30" Source="/imagenes/guardado.png"/>
                         <Label Content="Guardar" />
                     </StackPanel>
                 </Button>
@@ -76,7 +76,7 @@
 
                 <Button x:Name="EliminarButton" Click="EliminarButton_Click" Width="120" Margin="20,0,0,0" >
                     <StackPanel Orientation="Horizontal">
-                        <Image />
+                        <Image Height="30" Source="/imagenes/Eliminar.1.png"/>
                         <Label Content="Eliminar"/>
                     </StackPanel>
                 </Button>

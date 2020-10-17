@@ -20,7 +20,11 @@ namespace RegistroTarea3.UI.Registros
         public rPrestamos()
         {
             InitializeComponent();
-            this.DataContext = Prestamos;
+            PersonaIdComboBox.ItemsSource= PersonasBLL.GetList(p =>true);
+            PersonaIdComboBox.SelectedValuePath= "PersonaId";
+            PersonaIdComboBox.DisplayMemberPath="Nombres";
+            this.DataContext= Prestamos;
+
         }
         //Limpiar ********************************************************************************
         private void Limpiar()

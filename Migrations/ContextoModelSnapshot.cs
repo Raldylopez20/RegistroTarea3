@@ -16,6 +16,53 @@ namespace RegistroTarea3.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.8");
 
+            modelBuilder.Entity("RegistroTarea3.Entidades.Moras", b =>
+                {
+                    b.Property<int>("MoraId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("Total")
+                        .HasColumnType("REAL");
+
+                    b.HasKey("MoraId");
+
+                    b.ToTable("Moras");
+                });
+
+            modelBuilder.Entity("RegistroTarea3.Entidades.MorasDetalle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("FechaMoraDetalle")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("MoraId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("MorasId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("PrestamoId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<float>("Valor")
+                        .HasColumnType("REAL");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MoraId");
+
+                    b.HasIndex("PrestamoId");
+
+                    b.ToTable("MorasDetalle");
+                });
+
             modelBuilder.Entity("RegistroTarea3.Entidades.Personas", b =>
                 {
                     b.Property<int>("PersonaId")
@@ -60,6 +107,19 @@ namespace RegistroTarea3.Migrations
                     b.HasKey("PrestamoId");
 
                     b.ToTable("Prestamos");
+                });
+
+            modelBuilder.Entity("RegistroTarea3.Entidades.MorasDetalle", b =>
+                {
+                    b.HasOne("RegistroTarea3.Entidades.Moras", null)
+                        .WithMany("Detalle")
+                        .HasForeignKey("MoraId");
+
+                    b.HasOne("RegistroTarea3.Entidades.Prestamos", null)
+                        .WithMany("Detalle")
+                        .HasForeignKey("PrestamoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

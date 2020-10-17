@@ -25,6 +25,7 @@ namespace RegistroTarea3.BLL
             Contexto contexto = new Contexto();
             try
             {
+                prestamos.Balance = prestamos.Monto;
                 contexto.Prestamos.Add(prestamos);
                 paso = contexto.SaveChanges() > 0;
             }
@@ -45,6 +46,15 @@ namespace RegistroTarea3.BLL
             Contexto contexto = new Contexto();
             try
             {
+                //-------------------------------------------[ REGISTRO DETALLADO ]-------------------------------------------------
+                contexto.Database.ExecuteSqlRaw($"Delete FROM MorasDetalle Where PrestamoId={prestamos.PrestamoId}");
+
+                foreach (var item in prestamos.Detalle)
+                {
+                    contexto.Entry(item).State = EntityState.Added;
+                }
+                //------------------------------------------------------------------------------------------------------------------
+
                 contexto.Entry(prestamos).State = EntityState.Modified;
                 paso = contexto.SaveChanges() > 0;
             }
@@ -83,13 +93,17 @@ namespace RegistroTarea3.BLL
             return paso;
         }
         //Buscar *********************
-        public static Prestamos Buscar(int id)
+       public static Prestamos Buscar(int id)
         {
+            //-------------------[ REGISTRO DETALLADO ] -------------------
+            Prestamos prestamos = new Prestamos();
             Contexto contexto = new Contexto();
-            Prestamos prestamos;
             try
             {
-                prestamos = contexto.Prestamos.Find(id);
+                prestamos = contexto.Prestamos.Include(x => x.Detalle)
+                    .Where(x => x.PrestamoId == id)
+                    .SingleOrDefault();
+            //-------------------------------------------------------------
             }
             catch (Exception)
             {
