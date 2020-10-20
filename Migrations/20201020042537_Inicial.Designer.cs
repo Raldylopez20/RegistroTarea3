@@ -9,7 +9,7 @@ using RegistroTarea3.DAL;
 namespace RegistroTarea3.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20201016044802_Inicial")]
+    [Migration("20201020042537_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -44,10 +44,7 @@ namespace RegistroTarea3.Migrations
                     b.Property<DateTime>("FechaMoraDetalle")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("MoraId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("MorasId")
+                    b.Property<int>("MoraId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("PrestamoId")
@@ -103,6 +100,9 @@ namespace RegistroTarea3.Migrations
                     b.Property<double>("Monto")
                         .HasColumnType("REAL");
 
+                    b.Property<double>("Moras")
+                        .HasColumnType("REAL");
+
                     b.Property<int>("PersonaId")
                         .HasColumnType("INTEGER");
 
@@ -115,7 +115,9 @@ namespace RegistroTarea3.Migrations
                 {
                     b.HasOne("RegistroTarea3.Entidades.Moras", null)
                         .WithMany("Detalle")
-                        .HasForeignKey("MoraId");
+                        .HasForeignKey("MoraId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("RegistroTarea3.Entidades.Prestamos", null)
                         .WithMany("Detalle")

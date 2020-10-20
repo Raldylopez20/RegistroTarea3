@@ -22,6 +22,8 @@ namespace RegistroTarea3.Entidades
         
         public double Balance { set; get; }
 
+        public double Moras { get; set; }
+
          //REGISTRO DETALLADO
         [ForeignKey("PrestamoId")]
         public List<MorasDetalle> Detalle { get; set; } = new List<MorasDetalle>();

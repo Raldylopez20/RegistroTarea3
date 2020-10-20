@@ -22,7 +22,9 @@ namespace RegistroTarea3.UI.Registros
         public rMoras()
         {
             InitializeComponent();
-            //Constructor
+            PrestamoIdDetalleComboBox.ItemsSource= PrestamosBLL.GetList(p =>true);
+            PrestamoIdDetalleComboBox.SelectedValuePath= "PrestamosId";
+            PrestamoIdDetalleComboBox.DisplayMemberPath="PrestamoId";            
             this.DataContext = moras;
         }
         //----------------------------------[ CARGAR - Registro Detallado ]----------------------------------
@@ -41,16 +43,12 @@ namespace RegistroTarea3.UI.Registros
         private bool Validar()
         {
             bool Validado = true;
-            if (MoraIdTextbox.Text.Length == 0)
-            {
-                Validado = false;
-                MessageBox.Show("Transaccion Errada", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
+            
 
             if(moras.MoraId < 0)
             {
                 Validado = false;
-                MessageBox.Show("\nNo puede Guardar con el campo MoraId vacio", "Fallo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("\nNo puede Guardar con el campo MorasId vacio", "Fallo", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 
             if(moras.Fecha.Date < DateTime.Now.Date)
@@ -59,11 +57,11 @@ namespace RegistroTarea3.UI.Registros
                 MessageBox.Show("\nNo puede Guardar con el campo Fecha Mora vacio", "Fallo", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 
-            if(moras.Total <= 0)
+           /* if(moras.Total <= 0)
             {
                 Validado = false;
                 MessageBox.Show("\nNo puede Guardar con el campo Monto vacio", "Fallo", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
+            } */
 
            
             return Validado;
@@ -90,14 +88,28 @@ namespace RegistroTarea3.UI.Registros
             }
         }
         //----------------------------------[ AGREGAR FILA - Registro Detallado ]----------------------------------
+      
         private void AgregarFilaButton_Click(object sender, RoutedEventArgs e)
         {
-         moras.Detalle.Add( new  MorasDetalle( moras.MoraId, Convert.ToInt32(PrestamoIdDetalleTextBox.Text), FechaMoraDatePicker.DisplayDate, Convert.ToSingle(ValorTextBox.Text)));
+            MorasDetalle morita = new MorasDetalle();
+            moras.Detalle.Add( new MorasDetalle(morita.Id, PrestamoIdDetalleComboBox.SelectedIndex+1,morita.FechaMoraDetalle, Convert.ToSingle(ValorTextBox.Text)));
 
             Cargar();
 
             ValorTextBox.Clear();
         }
+      
+      
+      /*  private void AgregarFilaButton_Click(object sender, RoutedEventArgs e)
+        {
+         moras.Detalle.Add( new  MorasDetalle( moras.MorasId, Convert.ToInt32(PrestamoIdDetalleTextBox.Text), FechaMoraDatePicker.DisplayDate, Convert.ToSingle(ValorTextBox.Text)));
+
+            Cargar();
+
+            ValorTextBox.Clear();
+        }  */
+
+
         //----------------------------------[ REMOVER FILA - Registro Detallado ]----------------------------------
         private void RemoverFilaButton_Click(object sender, RoutedEventArgs e)
         {
@@ -113,7 +125,28 @@ namespace RegistroTarea3.UI.Registros
             Limpiar();
         }
         //=====================================================[ GUARDAR ]=====================================================
+     
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
+        {
+            {
+                if (!Validar())
+                    return;
+
+                var paso = MorasBLL.Guardar(moras);
+                if (paso)
+                {
+                    Limpiar();
+                    MessageBox.Show("Transaccion Exitosa", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                    MessageBox.Show("Faltan Campos, por favor agregarlos", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+     
+     
+     
+     
+       /*  private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
             {
                 if (!Validar())
@@ -128,7 +161,8 @@ namespace RegistroTarea3.UI.Registros
                 else
                     MessageBox.Show("Transaccion Errada", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
-        }
+        } */
+        
         //=====================================================[ ELIMINAR ]=====================================================
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {

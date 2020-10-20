@@ -12,7 +12,7 @@ namespace RegistroTarea3.Entidades
 
         public int Id { get; set; }
 
-        public int MorasId { get; set; }
+        public int MoraId { get; set; }
 
         public int PrestamoId { get; set; }
 
@@ -23,19 +23,17 @@ namespace RegistroTarea3.Entidades
         public MorasDetalle()
         {
 
-            Id = 0;
-            MorasId = 0;
-            PrestamoId = 0;
-            Valor = 0;
+            this.PrestamoId = 0;
+            this.Valor = 0;
             FechaMoraDetalle = DateTime.Now;
 
         }
     
     
-        public MorasDetalle(  int morasId, int prestamoId, DateTime fechaMoraDetalle, float valor)
+        public MorasDetalle(  int moraId, int prestamoId, DateTime fechaMoraDetalle, float valor)
         {
             Id = 0;
-            MorasId = morasId;
+            MoraId = moraId;
             PrestamoId  = prestamoId;
             FechaMoraDetalle = fechaMoraDetalle;
             Valor = valor;

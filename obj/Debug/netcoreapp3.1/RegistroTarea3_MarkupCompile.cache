@@ -1,20 +1,20 @@
 ﻿RegistroTarea3
-1.0.0.0
+
 
 winexe
 C#
 .cs
-c:\Users\pc\Desktop\SEMESTRE 3-2020\APLICADA 1\RegistroTarea3\obj\Debug\netcoreapp3.1\
+C:\Users\pc\Desktop\SEMESTRE 3-2020\APLICADA 1\RegistroTarea3\obj\Debug\netcoreapp3.1\
 RegistroTarea3
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
-c:\Users\pc\Desktop\SEMESTRE 3-2020\APLICADA 1\RegistroTarea3\App.xaml
-4-575155472
-6-1198829792
-201547648831
-216-2097819572
+C:\Users\pc\Desktop\SEMESTRE 3-2020\APLICADA 1\RegistroTarea3\App.xaml
+4-1214575830
+6541930772
+18-873700993
+21626063478
 MainWindow.xaml;UI\Registros\rMoras.xaml;UI\Registros\rPersonas.xaml;UI\Registros\rPrestamos.xaml;
 
-True
+False
 

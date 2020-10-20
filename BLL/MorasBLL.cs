@@ -47,7 +47,7 @@ namespace RegistroTarea3.BLL
             try
             {
                 //-------------------------------------------[ REGISTRO DETALLADO ]-------------------------------------------------
-                contexto.Database.ExecuteSqlRaw($"Delete FROM MorasDetalle Where MoraId={moras.MoraId}");
+                contexto.Database.ExecuteSqlRaw($"Delete FROM MorasDetalle Where MorasId={moras.MoraId}");
 
                 foreach (var item in moras.Detalle)
                 {

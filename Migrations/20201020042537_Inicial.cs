@@ -46,7 +46,8 @@ namespace RegistroTarea3.Migrations
                     PersonaId = table.Column<int>(nullable: false),
                     Concepto = table.Column<string>(nullable: true),
                     Monto = table.Column<double>(nullable: false),
-                    Balance = table.Column<double>(nullable: false)
+                    Balance = table.Column<double>(nullable: false),
+                    Moras = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -59,11 +60,10 @@ namespace RegistroTarea3.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    MorasId = table.Column<int>(nullable: false),
+                    MoraId = table.Column<int>(nullable: false),
                     PrestamoId = table.Column<int>(nullable: false),
                     Valor = table.Column<float>(nullable: false),
-                    FechaMoraDetalle = table.Column<DateTime>(nullable: false),
-                    MoraId = table.Column<int>(nullable: true)
+                    FechaMoraDetalle = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -73,7 +73,7 @@ namespace RegistroTarea3.Migrations
                         column: x => x.MoraId,
                         principalTable: "Moras",
                         principalColumn: "MoraId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_MorasDetalle_Prestamos_PrestamoId",
                         column: x => x.PrestamoId,

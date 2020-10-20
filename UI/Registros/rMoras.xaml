@@ -12,7 +12,7 @@
             <!--——————————————————————————————————————————————[ ID PRESTAMO ]——————————————————————————————————————————————-->
             <Label Content="Mora Id" FontWeight="Bold" FontSize="16" />
             <StackPanel Orientation="Horizontal" >
-            <TextBox x:Name="MoraIdTextbox" Text="{Binding MoraId}"  FontSize="16" VerticalContentAlignment="Center" Width="260" Background="#19000000"/>
+            <TextBox x:Name="MoraIdTextbox" Text="{Binding MoraId}"  FontSize="16" VerticalContentAlignment="Center" Width="260" />
                 
                 
                 <!--—————————————————————————————[ BOTON BUSCAR ]—————————————————————————————-->
@@ -38,7 +38,7 @@
 
                         
                         <Label Content="Prestamo Id"/>
-                        <TextBox x:Name="PrestamoIdDetalleTextBox" Text="{Binding Detalle.PrestamoId}" Height="20"/>
+                        <ComboBox x:Name="PrestamoIdDetalleComboBox" SelectedValue="{Binding Detalle.PrestamoId}" Height="20"/>
 
                        
                         <Label Content="Valor"/>
@@ -61,10 +61,11 @@
                         <DataGrid x:Name="DetalleDataGrid" Height="100" AutoGenerateColumns="False" ItemsSource="{Binding Detalle}" Margin="0,10,0,0">
                             <DataGrid.Columns>
                                 
-                                <DataGridTextColumn Header="PrestamoId" Binding="{Binding PrestamoId}"/>
+                                <DataGridTextColumn Header="PrestamoId                                   " Binding="{Binding PrestamoId}"/>
                                 
-                                <DataGridTextColumn Header="FechaMora" Binding="{Binding FechaMoraDetalle}"/>
-                                <DataGridTextColumn Header="Valor" Binding="{Binding Valor}"/>
+                                <DataGridTextColumn Header="FechaMora                                    " Binding="{Binding FechaMoraDetalle}"/>
+                               
+                                <DataGridTextColumn Header="Valor                                        " Binding="{Binding Valor}"/>
                             </DataGrid.Columns>
 
                             

@@ -18,17 +18,10 @@ namespace RegistroTarea3.Entidades
         public double Total { get; set; }
 
         [ForeignKey("MoraId")]
-        public List<MorasDetalle> Detalle { get; set; } = new List<MorasDetalle>();
-
-        public Moras()
-        {
-
-            MoraId = 0;
-            Total = 0;
-            Detalle = new List<MorasDetalle>();
+        public virtual List<MorasDetalle> Detalle { get; set; } = new List<MorasDetalle>();
 
 
-        }
+
 
     }
 
